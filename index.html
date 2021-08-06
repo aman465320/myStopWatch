@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
+
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+        .container {
+            background-color: rgba(86, 114, 110, 0.658);
+            margin: auto;
+            border: 4px solid rgb(63, 33, 9);
+            /* width: 80%; */
+            height: 1000px;
+        }
+
+        .headingg {
+            display: flex;
+            color: rgb(29, 28, 11);
+            font-family: 'Fredoka One', cursive;
+            justify-content: center;
+        }
+
+        .chotu {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 40px;
+            margin: auto;
+        }
+
+        .timer {
+            background-color: rgb(233, 235, 226);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            border: 2px solid black;
+            width: 15%;
+            height: 100px;
+            margin: auto;
+            border-radius: 10%;
+        }
+
+        .btn {
+            font-size: 1.5em;
+            border-radius: 10%;
+            border: 2px solid rgb(57, 57, 66);
+            font-weight: bold;
+            font-family: 'Acme', sans-serif;
+        }
+
+        .btn:hover {
+            cursor: pointer;
+        }
+
+        .timerpara {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 2em;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .footer {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            font-family: 'Lobster', cursive;
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1 class="headingg"> <u> STOPWATCH ⏱ </u></h1>
+
+        <div class="chotu">
+
+            <button class="btn" id="btn1">
+                START
+            </button>
+            <button class="btn" id="btn2">
+                STOP
+            </button>
+            <button class="btn" id="btn3">
+                RESET
+            </button>
+        </div>
+
+        <br><br><br><br><br>
+
+        <h2 class="headingg"> <u> TIMER ⏱ </u></h2>
+
+        <div class="timer">
+            <p class="timerpara"><span id="minutes_timer" class="spans">00</span> : <span id="seconds_timer"
+                    class="spans">00</span></p>
+        </div>
+
+        <br><br><br><br><br>
+
+        <div class="footer">
+            Made by Aman Mathur 😊
+        </div>
+
+    </div>
+
+
+
+    <script>
+        let x = document.querySelector("#btn1");
+        let y = document.querySelector("#btn2");
+        let z = document.querySelector("#btn3");
+        let temp;
+
+        let a = 0;//for seconds
+        let b = 0;//for minutes
+
+        let minutes = document.querySelector("#minutes_timer");
+        let seconds = document.querySelector("#seconds_timer");
+
+        x.addEventListener('click', function () {
+            clearInterval(temp);
+            temp = setInterval(startButton, 1000);
+        })
+
+        y.addEventListener('click', function () {
+            clearInterval(temp);
+        })
+
+        z.addEventListener('click', function () {
+            minutes.innerHTML = "00";
+            seconds.innerHTML = "00";
+            a = 0;
+            b = 0;
+            clearInterval(temp);
+        })
+
+
+
+        function startButton() {
+            a += 1;
+            if (a <= 9) {
+                seconds.innerHTML = "0" + a;
+            }
+
+            if (a > 9) {
+                seconds.innerHTML = a;
+            }
+
+            if (a >= 60) {
+                b++;
+                a = 0;
+                seconds.innerHTML = "00";
+                minutes.innerHTML = "0" + b;
+            }
+
+            if (b > 9) {
+                minutes.innerHTML = b;
+            }
+
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
